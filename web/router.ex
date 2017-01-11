@@ -9,8 +9,17 @@ defmodule GraphqlTest.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  # pipeline :api do
+  #   plug :accepts, ["json"]a
+  # end
+
+  forward "/api", Absinthe.Plug,
+    schema: GraphqlTest.Schema
+
+ # GraphiQL will only be enabled for dev environmentt
+  if Mix.env == :dev do
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: GraphqlTest.Schema
   end
 
   scope "/", GraphqlTest do
@@ -19,10 +28,8 @@ defmodule GraphqlTest.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  scope "/api", GraphqlTest do
-    pipe_through :api
-
-    resources "/animals", AnimalController
-  end
+  # # Other scopes may use custom stacks.
+  # scope "/api", GraphqlTest do
+  #   pipe_through :api
+  # end
 end

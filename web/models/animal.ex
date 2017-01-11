@@ -4,7 +4,7 @@ defmodule GraphqlTest.Animal do
   schema "animals" do
     field :name, :string
     field :info, :string
-    field :birth_date, Ecto.Date
+    field :birth_date, Ecto.DateTime
 
     timestamps()
   end

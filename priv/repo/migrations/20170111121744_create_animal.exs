@@ -5,7 +5,7 @@ defmodule GraphqlTest.Repo.Migrations.CreateAnimal do
     create table(:animals) do
       add :name, :string
       add :info, :string
-      add :birth_date, :date
+      add :birth_date, :timestamptz
 
       timestamps()
     end

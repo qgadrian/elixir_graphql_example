@@ -3,7 +3,7 @@ defmodule GraphqlTest.AnimalTest do
 
   alias GraphqlTest.Animal
 
-  @valid_attrs %{birth_date: %{day: 17, month: 4, year: 2010}, info: "some content", name: "some content"}
+  @valid_attrs %{birth_date: Ecto.DateTime.from_erl(:erlang.localtime), info: "some content", name: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

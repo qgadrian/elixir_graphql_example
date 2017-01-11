@@ -39,4 +39,5 @@ defmodule GraphqlTest.Endpoint do
     signing_salt: "AC2DJYpX"
 
   plug GraphqlTest.Router
+
 end
